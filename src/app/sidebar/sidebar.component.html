@@ -1,0 +1,23 @@
+<div class="topnav">
+  <div class="logo-container">
+    <button class="logo" (click)="toggleCollapse()">
+      <i class="fal fa-bars"></i>
+    </button>
+    <div class="logo-text">AdminPro</div>
+  </div>
+</div>
+<div class="sidenav" [ngClass]="isLeftSidebarCollapsed() ? 'sidenav-collapsed' : ''">
+  @if (!isLeftSidebarCollapsed()) {
+  <div class="sidenav-nav">
+    @for (item of navItems(); track $index) {
+    <li class="sidenav-nav-item">
+      <a class="sidenav-nav-link" [routerLink]="item.routeLink" routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }" [ngClass]="item.customClass" (click)="goToRoute()">
+        <i class="sidenav-link-icon" [class]="item.icon"></i>
+        <span class="sidenav-link-text">{{ item.label }}</span>
+      </a>
+    </li>
+    }
+  </div>
+  }
+</div>

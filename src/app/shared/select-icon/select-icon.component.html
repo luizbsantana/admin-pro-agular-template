@@ -1,0 +1,18 @@
+<p class="d-inline-flex gap-1" id="icon">
+    <span class="selected-icon" formControlName="icon"><i [ngClass]="selectedIcon() ? selectedIcon() : defaultIcon"></i></span>
+    <button class="btn btn-primary ms-3 more-icon" type="button" data-bs-toggle="collapse" data-bs-target="#icons"
+        aria-expanded="false" aria-controls="icons" id="toggleIcons">
+        Selecionar...
+    </button>
+</p>
+<div class="collapse" id="icons">
+    <div class="card card-body">
+        <div class="row">
+            @for (item of iconsOptions; track $index) {
+            <div class="col-2">
+                <span class="icon" (click)="selectIcon(item)"><i [class]="item"></i></span>
+            </div>
+            }
+        </div>
+    </div>
+</div>

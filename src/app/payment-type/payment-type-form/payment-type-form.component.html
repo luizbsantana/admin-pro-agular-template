@@ -1,0 +1,27 @@
+<div class="header">
+    <ul class="nav nav-pills nav-fill">
+        <li class="nav-item">
+            <button class="nav-link tab-active">Formas de Pagamento</button>
+        </li>
+    </ul>
+</div>
+<form class="form" [formGroup]="form">
+    <div class="mb-4">
+        <label for="name" class="form-label">Nome</label>
+        <input type="text" class="form-control" id="name" aria-describedby="name" formControlName="name">
+    </div>
+    <div class="mb-2">
+        <label for="icon" class="form-label">Ícone</label>
+        <br>
+        <input hidden class="form-control" formControlName="icon">
+        <app-select-icon [selectedIcon]="form.controls['icon'].value" (onIconSelected)="iconSelected($event)"></app-select-icon>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <button type="submit" class="btn btn-secondary btn-action" [routerLink]="[routeLink]">Cancelar</button>
+        </div>
+        <div class="col-6">
+            <button type="submit" class="btn btn-action btn-save" [disabled]="!form.valid" (click)="save()">Salvar</button>
+        </div>
+    </div>
+</form>

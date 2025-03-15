@@ -1,0 +1,36 @@
+@import '../../styles.scss';
+
+.body {
+  z-index: -1;
+  position: static;
+  top: 0;
+  transition: all 0.5s ease;
+  background: $body-background-color;
+  padding-top: calc(2rem + $topnav-height);
+  padding-right: 2rem;
+  padding-left: 2rem;
+  padding-bottom: 2rem;
+  height: 100%;
+  color: $theme-text-color;
+  overflow-y: scroll;
+}
+
+.body-trimmed {
+  margin-left: $sidenav-width;
+}
+
+.body-trimmed-small-screen {
+  margin-left: $sidenav-width;
+  position: fixed;
+  min-width: 100%;
+}
+
+.body-trimmed-collapsed {
+  margin-left: $sidenav-collapsed-width;
+}
+
+.body-trimmed-collapsed-small-screen {
+  margin-left: $sidenav-collapsed-width;
+  position: fixed;
+  min-width: 100%;
+}

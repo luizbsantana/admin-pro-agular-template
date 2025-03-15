@@ -1,0 +1,51 @@
+<div class="header">
+    <ul class="nav nav-pills nav-fill">
+        <li class="nav-item">
+            <button class="nav-link tab-active" [routerLink]="[routeLink]">Formas de Pagamento</button>
+        </li>
+    </ul>
+    <div class="input-group flex-nowrap mt-4">
+        <input type="text" class="form-control" placeholder="Pesquisar..." [(ngModel)]="filterValue">
+        <span class="input-group-text" id="addon-wrapping"><i class="fas fa-search"></i></span>
+    </div>
+</div>
+<div class="card mt-4">
+    @for (item of filter(filterValue); track $index) {
+    <div class="card-body row">
+        <div class="col-2">
+            <span class="icon"><i [class]="item.icon"></i></span>
+        </div>
+        <div class="col-8">
+            <span class="ms-4">{{ item.name }}</span>
+        </div>
+        <div class="dropdown options col-2">
+            <span data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></span>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" [routerLink]="[routeLink + '/edit', item.id]">Editar</a></li>
+                <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#deleteModal"
+                        (click)="delete(item)">Excluir</a></li>
+            </ul>
+        </div>
+    </div>
+    }
+</div>
+
+<div class="modal fade" id="deleteModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="deleteModaDismiss">Excluir</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                    id="closeDeleteModal"></button>
+            </div>
+            <div class="modal-body">
+                {{ deleteMessage }}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Fechar</button>
+                <button type="button" class="btn btn-primary" (click)="confirmDelete()">Excluir</button>
+            </div>
+        </div>
+    </div>
+</div>

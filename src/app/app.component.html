@@ -1,0 +1,4 @@
+<app-sidebar [navItems]="largeNavItems()" [isLeftSidebarCollapsed]="isLeftSidebarCollapsed()" [screenWidth]="screenWidth()"
+  (changeIsLeftSidebarCollapsed)="changeIsLeftSidebarCollapsed($event)" />
+
+<app-main [isLeftSidebarCollapsed]="isLeftSidebarCollapsed()" [screenWidth]="screenWidth()" />

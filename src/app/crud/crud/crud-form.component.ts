@@ -1,21 +1,21 @@
 import { Component } from '@angular/core';
 import { FormGroup, Validators, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule, RouterOutlet } from '@angular/router';
-import { PaymentTypeModel } from '../../models/payment-type.model';
-import { PaymentTypeService } from '../payment-type.service';
+import { CrudService } from '../crud.service';
 import { CommonModule } from '@angular/common';
 import { SelectIconComponent } from '../../shared/select-icon/select-icon.component';
 import { ToastrService } from 'ngx-toastr';
 import { HttpErrorHelper } from '../../helpers/http-error.helper';
+import { CrudModel } from '../../models/crud.model';
 
 @Component({
-  selector: 'app-payment-type-form',
+  selector: 'app-crud-form',
   imports: [CommonModule, ReactiveFormsModule, RouterModule, SelectIconComponent],
-  templateUrl: './payment-type-form.component.html',
-  styleUrl: './payment-type-form.component.scss'
+  templateUrl: './crud-form.component.html',
+  styleUrl: './crud-form.component.scss'
 })
-export class PaymentTypeFormComponent {
-  routeLink: string = '/payment-types';
+export class CrudFormComponent {
+  routeLink: string = '/crud';
   form: FormGroup = this.formBuilder.group({
     id: [''],
     name: ['', Validators.required],
@@ -25,7 +25,7 @@ export class PaymentTypeFormComponent {
   constructor(
     private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
-    private service: PaymentTypeService,
+    private service: CrudService,
     private toastr: ToastrService,
     private router: Router
   ) { }
@@ -42,7 +42,7 @@ export class PaymentTypeFormComponent {
     }
   }
 
-  async getById(id: string): Promise<PaymentTypeModel> {
+  async getById(id: string): Promise<CrudModel> {
     return await this.service.getById(id);
   }
 
@@ -51,7 +51,7 @@ export class PaymentTypeFormComponent {
   }
 
   async save(): Promise<void> {
-    var request = this.form.getRawValue() as PaymentTypeModel;
+    var request = this.form.getRawValue() as CrudModel;
 
     if (request.id) {
       this.edit(request);
@@ -61,7 +61,7 @@ export class PaymentTypeFormComponent {
     this.add(request);
   }
 
-  async add(request: PaymentTypeModel): Promise<void> {
+  async add(request: CrudModel): Promise<void> {
     await this.service.add(request).then(response => {
       this.router.navigate([this.routeLink]);
       this.toastr.success('Forma de pagamento adicionada com sucesso!');
@@ -71,7 +71,7 @@ export class PaymentTypeFormComponent {
     });
   }
 
-  async edit(request: PaymentTypeModel): Promise<void> {
+  async edit(request: CrudModel): Promise<void> {
     await this.service.edit(request).then(response => {
       this.router.navigate([this.routeLink]);
       this.toastr.success('Forma de pagamento editada com sucesso!');

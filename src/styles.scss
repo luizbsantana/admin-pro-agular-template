@@ -86,10 +86,22 @@ body {
 .dropdown-menu {
     background: $body-background-color !important;
     color: $theme-text-color !important;
+    border: 0.5px solid $theme-color-2 !important;
+    border-radius: 0.5rem;
+    padding: 0.1rem;
 }
 
 .dropdown-item {
     color: $theme-text-color !important;
+    border-radius: 0.5rem;
+}
+
+.dropdown-item:hover {
+    color: $theme-color-2 !important;
+}
+
+.dropdown-item-divider {
+    border: 0.5px solid $theme-color-2 !important;
 }
 
 .header {

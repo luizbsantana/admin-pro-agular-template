@@ -1,12 +1,12 @@
 import { Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { PaymentTypeComponent } from './payment-type/payment-type.component';
-import { PaymentTypeFormComponent } from './payment-type/payment-type-form/payment-type-form.component';
+import { CrudComponent } from './crud/crud.component';
+import { CrudFormComponent } from './crud/crud/crud-form.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
     { path: 'dashboard', component: DashboardComponent },
-    { path: 'payment-types', component: PaymentTypeComponent },
-    { path: 'payment-types/add', component: PaymentTypeFormComponent },
-    { path: 'payment-types/edit/:id', component: PaymentTypeFormComponent }
+    { path: 'crud', component: CrudComponent },
+    { path: 'crud/add', component: CrudFormComponent },
+    { path: 'crud/edit/:id', component: CrudFormComponent }
 ];

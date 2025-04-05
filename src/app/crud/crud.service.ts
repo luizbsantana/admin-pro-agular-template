@@ -2,42 +2,42 @@ import { Injectable } from "@angular/core";
 import { environment } from "../../environments/environment";
 import { HttpClient } from "@angular/common/http";
 import { first } from "rxjs";
-import { PaymentTypeModel } from "../models/payment-type.model";
+import { CrudModel } from "../models/crud.model";
 
 @Injectable({
     providedIn: 'root'
 })
-export class PaymentTypeService {
-    private URL = `${environment.apiUrl}/api/payment-type`;
-    data: PaymentTypeModel[] = [
+export class CrudService {
+    private URL = `${environment.apiUrl}/api/crud`;
+    data: CrudModel[] = [
         { id: '1', name: 'Pix', icon: 'fal fa-money-bill' },
         { id: '2', name: 'Dinheiro', icon: 'fal fa-money-bill' }
     ];
 
     constructor(private http: HttpClient) { }
 
-    get(): Promise<PaymentTypeModel[]> {
-        return new Promise<PaymentTypeModel[]>((resolve, reject) => {
+    get(): Promise<CrudModel[]> {
+        return new Promise<CrudModel[]>((resolve, reject) => {
             resolve(this.data)
         });
-        // return this.http.get(`${this.URL}`).pipe(first()).toPromise() as Promise<PaymentTypeModel[]>;
+        // return this.http.get(`${this.URL}`).pipe(first()).toPromise() as Promise<CrudModel[]>;
     }
 
-    getById(id: string): Promise<PaymentTypeModel> {
-        return new Promise<PaymentTypeModel>((resolve, reject) => {
+    getById(id: string): Promise<CrudModel> {
+        return new Promise<CrudModel>((resolve, reject) => {
             resolve(this.data.find(c => c.id == id))
         });
-        // return this.http.get(`${this.URL}/${id}`).pipe(first()).toPromise() as Promise<PaymentTypeModel>;
+        // return this.http.get(`${this.URL}/${id}`).pipe(first()).toPromise() as Promise<CrudModel>;
     }
 
-    add(request: PaymentTypeModel) {
+    add(request: CrudModel) {
         return new Promise<void>((resolve, reject) => {
             resolve()
         });
         // return this.http.post(`${this.URL}`, request).pipe(first()).toPromise() as Promise<any>;
     }
 
-    edit(request: PaymentTypeModel) {
+    edit(request: CrudModel) {
         return new Promise<void>((resolve, reject) => {
             resolve()
         });

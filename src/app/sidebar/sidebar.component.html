@@ -3,7 +3,24 @@
     <button class="logo" (click)="toggleCollapse()">
       <i class="fal fa-bars"></i>
     </button>
-    <div class="logo-text">AdminPro</div>
+    <div class="logo-text">{{ systemName }}</div>
+  </div>
+  <div class="dropdown options user-container user-avatar">
+    @if (userPhoto)
+    {
+    <img src="assets/user-avatar.jpeg" alt="User Avatar" class="dropdown options" data-bs-toggle="dropdown"
+      aria-expanded="false" />
+    }
+    @if (!userPhoto)
+    {
+    <div class="user-avatar dropdown options" data-bs-toggle="dropdown" aria-expanded="false">
+      <span class="avatar-fallback">{{ userInitials }}</span>
+    </div>
+    }
+    <ul class="dropdown-menu">
+      <li><a class="user-option dropdown-item">Meu Perfil</a></li>
+      <li><a class="user-option dropdown-item">Sair</a></li>
+    </ul>
   </div>
 </div>
 <div class="sidenav" [ngClass]="isLeftSidebarCollapsed() ? 'sidenav-collapsed' : ''">

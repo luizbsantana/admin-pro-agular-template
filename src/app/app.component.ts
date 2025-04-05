@@ -4,7 +4,6 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { MainComponent } from './main/main.component';
 import { NavItemModel } from './models/nav-item.model';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { NavItemDeviceSizeModel } from './models/nav-tem-device-size.model';
 import { AppService } from './app.service';
 
 @Component({
@@ -21,26 +20,19 @@ export class AppComponent {
       routeLink: `${this.currentRoute}/add`,
       icon: 'fal fa-plus',
       label: 'Adicionar',
-      deviceSize: NavItemDeviceSizeModel.All,
       customClass: 'add'
     },
     {
       routeLink: 'dashboard',
       icon: 'fal fa-home',
       label: 'Dashboard',
-      deviceSize: NavItemDeviceSizeModel.All
     },
     {
-      routeLink: 'payment-types',
+      routeLink: 'crud',
       icon: 'fal fa-bookmark',
       label: 'Crud',
-      deviceSize: NavItemDeviceSizeModel.All
     },
   ];
-  smallNavItems = signal<NavItemModel[]>(this.navItems
-    .filter(item => item.deviceSize == NavItemDeviceSizeModel.All || item.deviceSize == NavItemDeviceSizeModel.Small));
-  largeNavItems = signal<NavItemModel[]>(this.navItems
-    .filter(item => item.deviceSize == NavItemDeviceSizeModel.All || item.deviceSize == NavItemDeviceSizeModel.Large));
   isLeftSidebarCollapsed = signal<boolean>(false);
   screenWidth = signal<number>(window.innerWidth);
 

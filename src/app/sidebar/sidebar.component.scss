@@ -1,4 +1,4 @@
-@import '../../styles.scss';
+@import "../../styles.scss";
 
 .topnav {
     background: $theme-color-1;
@@ -136,4 +136,38 @@
     background-color: $theme-color-2 !important;
     color: $theme-text-color !important;
     padding-left: 0.3rem;
+}
+
+.user-container {
+    width: 100%;
+}
+
+.user-avatar img,
+.avatar-fallback {
+    float: right;
+    margin-right: 1.5rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid $theme-color-2;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.avatar-fallback {
+    color: $theme-text-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.user-option {
+    padding: 0.5rem;
+}
+
+.user-initials {
+    margin-right: 0.8rem;
+    color: $theme-text-color;
 }
